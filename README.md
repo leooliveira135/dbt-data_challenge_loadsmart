@@ -1,0 +1,1 @@
+# dbt-data_challenge_loadsmart
