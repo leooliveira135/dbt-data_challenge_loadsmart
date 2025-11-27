@@ -2,3 +2,8 @@
 target/
 dbt_packages/
 logs/
+
+terraform/.terraform/
+terraform/*.hcl
+terraform/*.tfstate
+terraform/*.tfstate.backup
