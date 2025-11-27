@@ -76,11 +76,12 @@ resource "aws_s3_bucket" "raw" {
   }
 }
 
-data "aws_s3_object" "data_object" {
+resource "aws_s3_object" "data_challenge" {
   bucket = aws_s3_bucket.raw.id
   key    = "data/2025_data_challenge_loadsmart.csv"
+  source = "${path.module}/2025_data_challenge_ae.csv"
+  etag   = filemd5("${path.module}/2025_data_challenge_ae.csv")
 }
-
 
 resource "aws_s3_bucket" "stg" {
   bucket = "data-challenge-loadsmart-stg"
