@@ -76,6 +76,12 @@ resource "aws_s3_bucket" "raw" {
   }
 }
 
+data "aws_s3_object" "data_object" {
+  bucket = aws_s3_bucket.raw.id
+  key    = "data/2025_data_challenge_loadsmart.csv"
+}
+
+
 resource "aws_s3_bucket" "stg" {
   bucket = "data-challenge-loadsmart-stg"
 
