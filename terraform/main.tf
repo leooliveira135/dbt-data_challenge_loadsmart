@@ -4,10 +4,10 @@ terraform {
 			source  = "hashicorp/aws"
 			version = "~> 5.0"
 		}
-    pgp = {
-      source = "ekristen/pgp"
-      version = "0.2.4"
-    }
+	    pgp = {
+	      source = "ekristen/pgp"
+	      version = "0.2.4"
+	    }
 	}
 }
 
