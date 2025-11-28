@@ -93,6 +93,11 @@ resource "aws_s3_bucket" "stg" {
   }
 }
 
+resource "aws_s3_object" "athena_results" {
+  bucket = aws_s3_bucket.stg.id
+  key    = "athena/" 
+}
+
 resource "aws_s3_bucket" "prd" {
   bucket = "data-challenge-loadsmart"
 
@@ -103,12 +108,92 @@ resource "aws_s3_bucket" "prd" {
   }
 }
 
-resource "aws_athena_data_catalog" "aws-star-schema" {
-  name        = "aws-star-schema"
+resource "aws_s3_object" "athena_schemas" {
+  bucket = aws_s3_bucket.prd.id
+  key    = "athena/" 
+}
+
+resource "aws_athena_data_catalog" "aws_star_schema" {
+  name        = "aws_star_schema"
   description = "Loadsmart Glue based Data Catalog"
   type        = "GLUE"
 
   parameters = {
     "catalog-id" = data.aws_caller_identity.current.account_id
   }
+}
+
+# IAM Policy for Glue and Athena access
+resource "aws_iam_policy" "athena_glue_policy" {
+  name        = "athena-glue-dbt-policy"
+  description = "Policy for dbt to access Glue and Athena"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "glue:GetDatabase",
+          "glue:GetDatabases",
+          "glue:CreateDatabase",
+          "glue:UpdateDatabase",
+          "glue:DeleteDatabase",
+          "glue:GetTable",
+          "glue:GetTables",
+          "glue:CreateTable",
+          "glue:UpdateTable",
+          "glue:DeleteTable",
+          "glue:GetPartition",
+          "glue:GetPartitions",
+          "glue:CreatePartition",
+          "glue:BatchCreatePartition",
+          "glue:UpdatePartition",
+          "glue:DeletePartition",
+          "glue:BatchDeletePartition"
+        ]
+        Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "athena:StartQueryExecution",
+          "athena:StopQueryExecution",
+          "athena:GetQueryExecution",
+          "athena:GetQueryResults",
+          "athena:ListQueryExecutions",
+          "athena:GetWorkGroup",
+          "athena:ListWorkGroups"
+        ]
+        Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket",
+          "s3:GetBucketVersioning",
+          "s3:ListBucketVersions"
+        ]
+        Resource = [
+          "arn:aws:s3:::data-challenge-loadsmart-raw",
+          "arn:aws:s3:::data-challenge-loadsmart-raw/*",
+          "arn:aws:s3:::data-challenge-loadsmart-stg",
+          "arn:aws:s3:::data-challenge-loadsmart-stg/*",
+          "arn:aws:s3:::data-challenge-loadsmart",
+          "arn:aws:s3:::data-challenge-loadsmart/*"
+        ]
+      }
+    ]
+  })
+}
+
+# Attach policy to the terraform-aws user
+resource "aws_iam_user_policy_attachment" "terraform_aws_policy" {
+  for_each = local.users
+
+  user       = aws_iam_user.create_user[each.key].name
+  policy_arn = aws_iam_policy.athena_glue_policy.arn
 }
