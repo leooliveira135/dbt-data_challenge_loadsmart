@@ -93,6 +93,11 @@ resource "aws_s3_bucket" "stg" {
   }
 }
 
+resource "aws_s3_object" "athena_results" {
+  bucket = aws_s3_bucket.stg.id
+  key    = "athena/" 
+}
+
 resource "aws_s3_bucket" "prd" {
   bucket = "data-challenge-loadsmart"
 
@@ -101,6 +106,11 @@ resource "aws_s3_bucket" "prd" {
     Env = "prd"
     Tier = "production"
   }
+}
+
+resource "aws_s3_object" "athena_schemas" {
+  bucket = aws_s3_bucket.prd.id
+  key    = "athena/" 
 }
 
 resource "aws_athena_data_catalog" "aws_star_schema" {
