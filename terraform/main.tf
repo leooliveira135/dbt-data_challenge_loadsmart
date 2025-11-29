@@ -150,7 +150,15 @@ resource "aws_iam_policy" "athena_glue_policy" {
           "glue:BatchCreatePartition",
           "glue:UpdatePartition",
           "glue:DeletePartition",
-          "glue:BatchDeletePartition"
+          "glue:BatchDeletePartition",
+          "glue:CreateCrawler",
+          "glue:DeleteCrawler",
+          "glue:GetCrawler",
+          "glue:GetCrawlers",
+          "glue:StartCrawler",
+          "glue:StopCrawler",
+          "glue:UpdateCrawler",
+          "glue:ListCrawlers"
         ]
         Resource = "*"
       },
@@ -163,7 +171,12 @@ resource "aws_iam_policy" "athena_glue_policy" {
           "athena:GetQueryResults",
           "athena:ListQueryExecutions",
           "athena:GetWorkGroup",
-          "athena:ListWorkGroups"
+          "athena:ListWorkGroups",
+          "athena:GetDataCatalog",
+          "athena:ListDataCatalogs",
+          "athena:CreateDataCatalog",
+          "athena:UpdateDataCatalog",
+          "athena:DeleteDataCatalog"
         ]
         Resource = "*"
       },
