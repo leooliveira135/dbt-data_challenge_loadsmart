@@ -123,6 +123,24 @@ resource "aws_athena_data_catalog" "aws_star_schema" {
   }
 }
 
+# IAM Role for Glue Crawler
+resource "aws_iam_role" "glue_role" {
+  name        = "glue-crawler-role"
+  description = "Role for Glue Crawler to access S3 and Glue"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Principal = {
+          Service = "glue.amazonaws.com"
+        }
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+}
+
 # IAM Policy for Glue and Athena access
 resource "aws_iam_policy" "athena_glue_policy" {
   name        = "athena-glue-dbt-policy"
@@ -198,6 +216,11 @@ resource "aws_iam_policy" "athena_glue_policy" {
           "arn:aws:s3:::data-challenge-loadsmart",
           "arn:aws:s3:::data-challenge-loadsmart/*"
         ]
+      },
+      {
+        Effect = "Allow"
+        Action = "iam:PassRole"
+        Resource = aws_iam_role.glue_role.arn
       }
     ]
   })
@@ -206,7 +229,12 @@ resource "aws_iam_policy" "athena_glue_policy" {
 # Attach policy to the terraform-aws user
 resource "aws_iam_user_policy_attachment" "terraform_aws_policy" {
   for_each = local.users
-
   user       = aws_iam_user.create_user[each.key].name
+  policy_arn = aws_iam_policy.athena_glue_policy.arn
+}
+
+# Attach policy to the Glue Role
+resource "aws_iam_role_policy_attachment" "glue_role_policy" {
+  role       = aws_iam_role.glue_role.name
   policy_arn = aws_iam_policy.athena_glue_policy.arn
 }
