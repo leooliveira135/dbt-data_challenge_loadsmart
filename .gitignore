@@ -3,6 +3,7 @@ target/
 dbt_packages/
 logs/
 
+src/__pycache__/
 src/loader/__pycache__/
 src/loader/spark-warehouse/
 
