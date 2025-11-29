@@ -3,6 +3,10 @@ target/
 dbt_packages/
 logs/
 
+src/__pycache__/
+src/loader/__pycache__/
+src/loader/spark-warehouse/
+
 terraform/.terraform/
 terraform/*.hcl
 terraform/*.tfstate
