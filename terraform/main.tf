@@ -128,14 +128,14 @@ resource "aws_iam_role" "glue_role" {
   name        = "glue-crawler-role"
   description = "Role for Glue Crawler to access S3 and Glue"
   assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
+    "Version": "2012-10-17",
+    "Statement": [
       {
-        Effect = "Allow"
-        Principal = {
-          Service = "glue.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "glue.amazonaws.com"
+        },
+        "Action": "sts:AssumeRole"
       }
     ]
   })
