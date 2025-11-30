@@ -1,11 +1,11 @@
 from datetime import datetime
 
 aws_profile_name = "default"
-aws_glue_role = "athena-glue-dbt-policy"
+aws_glue_role = "glue-crawler-role"
 
 input_s3_path = "s3a://data-challenge-loadsmart-raw/data/"
 table_name = "data_challenge"
-output_s3_path = "s3://data-challenge-loadsmart-stg/deltalake/"
+output_s3_path = "s3a://data-challenge-loadsmart-stg/data_challenge/"
 
 partition_key = "loading_date"
 partition_data = datetime.now().strftime("%Y-%m-%d")
