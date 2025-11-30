@@ -141,6 +141,28 @@ resource "aws_iam_role" "glue_role" {
   })
 }
 
+# Managed IAM policy granting CloudWatch Logs write for Glue
+resource "aws_iam_policy" "glue_cloudwatch_logs" {
+  name        = "GlueCloudWatchLogsWrite-${var.aws_region}"
+  description = "Allow AWS Glue to create log streams and put log events into /aws-glue/crawlers"
+  policy      = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid    = "AllowGlueCloudWatchLogsWrite",
+        Effect = "Allow",
+        Action = [
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:DescribeLogStreams",
+          "logs:PutLogEvents"
+        ],
+        Resource = "arn:aws:logs:${var.aws_region}:${var.aws_account_id}:log-group:/aws-glue/crawlers:*"
+      }
+    ]
+  })
+}
+
 # IAM Policy for Glue and Athena access
 resource "aws_iam_policy" "athena_glue_policy" {
   name        = "athena-glue-dbt-policy"
@@ -237,4 +259,13 @@ resource "aws_iam_user_policy_attachment" "terraform_aws_policy" {
 resource "aws_iam_role_policy_attachment" "glue_role_policy" {
   role       = aws_iam_role.glue_role.name
   policy_arn = aws_iam_policy.athena_glue_policy.arn
+}
+
+# Attach the managed policy to the existing Glue role
+resource "aws_iam_role_policy_attachment" "attach_glue_cwl" {
+  role       = aws_iam_role.glue_role.name
+  policy_arn = aws_iam_policy.glue_cloudwatch_logs.arn
+
+  # ensure role exists before attachment
+  depends_on = [aws_iam_role.glue_role, aws_iam_policy.glue_cloudwatch_logs]
 }
