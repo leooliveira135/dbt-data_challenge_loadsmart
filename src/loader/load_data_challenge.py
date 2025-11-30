@@ -26,10 +26,7 @@ def read_aws_credentials(profile_name: str):
     """
     session = boto3.Session(profile_name=profile_name)
     account_id = session.client('sts').get_caller_identity().get('Account')
-    return {
-        "region_name": session.region_name,
-        "account_id": account_id
-    }
+    return account_id
 
 def load_data_into_glue_database(database_name: str, table_name: str, s3_path: str, account_id: str, crawler_name: str):
     """
@@ -126,8 +123,7 @@ def main(spark: SparkSession):
     logging.info("Starting data load process...")
 
     logging.info(f"Reading AWS credentials for profile: {aws_profile_name}")
-    creds = read_aws_credentials(aws_profile_name)
-    region, account_id = creds["region_name"], creds["account_id"]
+    account_id = read_aws_credentials(aws_profile_name)
 
     # Load data into Spark
     logging.info(f"Loading data from {input_s3_path} into table {table_name}")
