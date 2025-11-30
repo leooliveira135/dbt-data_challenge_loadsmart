@@ -154,7 +154,7 @@ def main(spark: SparkSession):
             transform_df = convert_field_to_date(transform_df, field.name, datetime_format)
 
     # Add partitioning column
-    transform_df = transform_df.withColumn(partition_key, lit(partition_data).cast("date"))
+    transform_df = transform_df.withColumn(partition_key, lit(partition_data))
 
     # Example query to show data after processing
     logging.info(f"Querying top 20 records after date conversion from table {table_name}")
