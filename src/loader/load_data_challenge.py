@@ -53,8 +53,7 @@ def load_data_into_glue_database(database_name: str, table_name: str, s3_path: s
                 "S3Targets": [
                     {"Path": s3_path.replace("s3a://", "s3://")},
                 ]
-            },
-            TablePrefix=f"{table_name}_",
+            }
         )
         logging.info(f"Crawler '{crawler_name}' created successfully.")
 
