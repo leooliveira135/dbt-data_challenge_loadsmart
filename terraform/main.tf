@@ -198,7 +198,15 @@ resource "aws_iam_policy" "athena_glue_policy" {
           "glue:StartCrawler",
           "glue:StopCrawler",
           "glue:UpdateCrawler",
-          "glue:ListCrawlers"
+          "glue:ListCrawlers",
+          "glue:GetDatabase",
+          "glue:GetDatabases",
+          "glue:GetTable",
+          "glue:GetTables",
+          "glue:GetPartition",
+          "glue:GetPartitions",
+          "glue:GetPartitionIndexes",
+          "glue:BatchGetPartition"
         ]
         Resource = "*"
       },
