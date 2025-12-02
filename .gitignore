@@ -3,9 +3,10 @@ target/
 dbt_packages/
 logs/
 
-src/__pycache__/
+**/__pycache__/
 src/loader/__pycache__/
 src/loader/spark-warehouse/
+src/notebook/*.json
 
 terraform/.terraform/
 terraform/*.hcl
