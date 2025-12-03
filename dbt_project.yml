@@ -30,6 +30,19 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   data_challenge_loadsmart:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: table
+    star_schema:
+      dimensions:
+        +enabled: true
+        +materialized: table
+      facts:
+        +enabled: true
+        +materialized: table
+
+sources:
+  data_challenge_loadsmart:
+    loadsmart:
+      +enabled: true
+      +meta:
+        provider: aws
+        service: athena
+        aws_region: "us-east-1"
