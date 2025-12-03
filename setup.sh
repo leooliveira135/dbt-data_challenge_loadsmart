@@ -51,6 +51,22 @@ aws configure set default.region us-east-1
 aws configure set default.output json
 aws sts get-caller-identity
 
+# install pyenv (follow prompts if you don't have build deps)
+curl https://pyenv.run | bash
+
+# Then follow pyenv post-install steps to add to your shell (usually in ~/.bashrc)
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+pyenv install 3.11.6
+pyenv virtualenv 3.11.6 dbt-3.11
+pyenv activate dbt-3.11
+
+sudo dnf5 install -y bzip2-devel sqlite-devel readline-devel gdbm-devel libdb-devel libuuid-devel tk-devel && rm -rf ~/.pyenv/versions/3.11.6 ~/.pyenv/versions/dbt-3.11
+
+source /home/leonardooliveira/dbt-env/bin/activate
+
 # install dbt into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.getdbt.com/docs/core/pip-install
 sudo dnf install -y python3 python3-pip
@@ -74,5 +90,6 @@ dbt test --profiles-dir .
 # run requirements.txt to install pyspark
 cd $project_path/src/loader
 pip3 install -r requirements.txt
+python -m src.loader.load_data_challenge
 
 echo "Setup completed successfully."
