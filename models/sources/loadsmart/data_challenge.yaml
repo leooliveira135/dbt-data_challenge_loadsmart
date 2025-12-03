@@ -1,0 +1,114 @@
+version: 2
+
+sources:
+  - name: loadsmart        # logical name for the source in dbt
+    loader: athena          # helpful meta info (not required by dbt itself)
+    meta:
+      provider: aws
+      service: athena
+      glue_database: "loadsmart"   # Glue database backing Athena (if applicable)
+      aws_region: "us-east-1"              # ex: us-east-1
+      s3_location: "s3://data-challenge-loadsmart-stg/data_challenge" # optional metadata for docs
+    tables:
+      - name: data_challenge                          # dbt source table name (used in refs)
+        description: "Brief description of this Athena table."
+        columns:
+          - name: loadsmart_id
+            data_type: "integer"
+            description: "Unique identifier for Loadsmart records"
+            tests:
+              - not_null
+              - unique
+          - name: lane
+            data_type: "string"
+            description: "Lane information for the shipment"
+          - name: quote_date
+            data_type: "timestamp"
+            description: "Date when the quote was created"
+          - name: book_date
+            data_type: "timestamp"
+            description: "Date when the booking was made"
+          - name: source_date
+            data_type: "timestamp"
+            description: "Date when the data was sourced"
+          - name: pickup_date
+            data_type: "timestamp"
+            description: "Scheduled pickup date for the shipment"
+          - name: delivery_date
+            data_type: "timestamp"
+            description: "Scheduled delivery date for the shipment"
+          - name: book_price
+            data_type: "double"
+            description: "Price at which the shipment was booked"
+          - name: source_price
+            data_type: "double"
+            description: "Price from the data source"
+          - name: pnl
+            data_type: "double"
+            description: "Profit and Loss for the shipment"
+          - name: mileage
+            data_type: "double"
+            description: "Mileage for the shipment"
+          - name: equipment_type
+            data_type: "string"
+            description: "Type of equipment used for the shipment"
+          - name: carrier_rating
+            data_type: "integer"
+            description: "Rating of the carrier"
+          - name: sourcing_channel
+            data_type: "string"
+            description: "Channel through which the shipment was sourced"
+          - name: vip_carrier
+            data_type: "boolean"
+            description: "Indicates if the carrier is a VIP carrier"
+          - name: carrier_dropped_us_count
+            data_type: "integer"
+            description: "Count of times the carrier dropped US shipments"
+          - name: carrier_name
+            data_type: "string"
+            description: "Name of the carrier"
+          - name: shipper_name
+            data_type: "string"
+            description: "Name of the shipper"
+          - name: carrier_on_time_to_pickup
+            data_type: "boolean"
+            description: "Indicates if the carrier was on time for pickup"
+          - name: carrier_on_time_to_delivery
+            data_type: "boolean"
+            description: "Indicates if the carrier was on time for delivery"
+          - name: carrier_on_time_overall
+            data_type: "boolean"
+            description: "Overall on-time performance of the carrier"
+          - name: pickup_appointment_time
+            data_type: "timestamp"
+            description: "Appointment time for pickup"
+          - name: delivery_appointment_time
+            data_type: "timestamp"
+            description: "Appointment time for delivery"
+          - name: has_mobile_app_tracking23
+            data_type: "boolean"
+            description: "Indicates if mobile app tracking is available"
+          - name: has_mobile_app_tracking24
+            data_type: "boolean"
+            description: "Indicates if mobile app tracking is available"
+          - name: has_macropoint_tracking
+            data_type: "boolean"
+            description: "Indicates if Macropoint tracking is available"
+          - name: has_edi_tracking
+            data_type: "boolean"
+            description: "Indicates if EDI tracking is available"
+          - name: contracted_load
+            data_type: "boolean"
+            description: "Indicates if the load is contracted"
+          - name: load_booked_autonomously
+            data_type: "boolean"
+            description: "Indicates if the load was booked autonomously"
+          - name: load_sourced_autonomously
+            data_type: "boolean"
+            description: "Indicates if the load was sourced autonomously"
+          - name: load_was_cancelled
+            data_type: "boolean"
+            description: "Indicates if the load was cancelled"
+          - name: loading_date
+            data_type: "string"
+            description: "Date when the load was created"

@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: dim_book
+    description: "Dimension table for the Book details"
+    columns:
+      - name: loadsmart_id
+        description: "Unique identifier for Loadsmart records."
+      - name: quote_date
+        description: "Date when the quote was created"
+      - name: book_date
+        description: "Date when the booking was made"
+      - name: source_date
+        description: "Date when the data was sourced"
+      - name: book_price
+        description: "Price at which the shipment was booked"
+      - name: source_price
+        description: "Price from the data source"
+      - name: has_mobile_app_tracking23
+        description: "Indicates if mobile app tracking is available"
+      - name: has_mobile_app_tracking24
+        description: "Indicates if mobile app tracking is available"
+      - name: has_macropoint_tracking
+        description: "Indicates if Macropoint tracking is available"
+      - name: has_edi_tracking
+        description: "Indicates if EDI tracking is available"
+      - name: contracted_load
+        description: "Indicates if the load is contracted"
+      - name: load_booked_autonomously
+        description: "Indicates if the load was booked autonomously"
+      - name: load_sourced_autonomously
+        description: "Indicates if the load was sourced autonomously"
+      - name: load_was_cancelled
+        description: "Indicates if the load was cancelled"

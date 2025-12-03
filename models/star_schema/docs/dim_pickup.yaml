@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_pickup
+    description: "Dimension table for pickup details."
+    columns:
+      - name: loadsmart_id
+        description: "Unique identifier for Loadsmart records."
+      - name: pickup_city
+        description: "City where the pickup is scheduled."
+      - name: pickup_state
+        description: "State where the pickup is scheduled."
+      - name: pickup_date
+        description: "Scheduled pickup date for the shipment."
+      - name: pickup_appointment_time
+        description: "Appointment time for the pickup."

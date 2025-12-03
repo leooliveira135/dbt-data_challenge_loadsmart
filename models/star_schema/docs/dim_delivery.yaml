@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_delivery
+    description: "Dimension table for delivery details."
+    columns:
+      - name: loadsmart_id
+        description: "Unique identifier for Loadsmart records."
+      - name: delivery_city
+        description: "City where the delivery is scheduled."
+      - name: delivery_state
+        description: "State where the delivery is scheduled."
+      - name: delivery_date
+        description: "Scheduled delivery date for the shipment."
+      - name: delivery_appointment_time
+        description: "Appointment time for the delivery."
