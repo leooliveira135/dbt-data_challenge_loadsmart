@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: fact_loadsmart
+    description: "Fact table for the loadsmart details"
+    columns:
+      - name: loadsmart_id
+        description: "Unique identifier for Loadsmart records."
+      - name: quote_date
+        description: "Date when the quote was created"
+      - name: book_date
+        description: "Date when the booking was made"
+      - name: source_date
+        description: "Date when the data was sourced"
+      - name: book_price
+        description: "Price at which the shipment was booked"
+      - name: source_price
+        description: "Price from the data source"
+      - name: carrier_rating
+        description: "Rating of the carrier."
+      - name: carrier_dropped_us_count
+        description: "Count of times the carrier dropped US shipments."
+      - name: delivery_date
+        description: "Scheduled delivery date for the shipment."
+      - name: delivery_appointment_time
+        description: "Appointment time for the delivery."
+      - name: pickup_date
+        description: "Scheduled pickup date for the shipment."
+      - name: pickup_appointment_time
+        description: "Appointment time for the pickup."
+      - name: pnl
+        description: "Profit and Loss for the shipment"
+      - name: mileage
+        description: "Mileage for the shipment"
+      

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_shippers
+    description: "Dimension table for the Shipper details"
+    columns:
+      - name: loadsmart_id
+        description: "Unique identifier for Loadsmart records."
+      - name: pnl
+        description: "Profit and Loss for the shipment"
+      - name: mileage
+        description: "Mileage for the shipment"
+      - name: equipment_type
+        description: "Type of equipment used for the shipment"
+      - name: sourcing_channel
+        description: "Channel through which the shipment was sourced"
+      - name: shipper_name
+        description: "Name of the shipper"

@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_carriers
+    description: "Dimension table for carriers."
+    columns:
+      - name: loadsmart_id
+        description: "Unique identifier for Loadsmart records."
+      - name: carrier_rating
+        description: "Rating of the carrier."
+      - name: vip_carrier
+        description: "Indicates if the carrier is a VIP carrier."
+      - name: carrier_dropped_us_count
+        description: "Count of times the carrier dropped US shipments."
+      - name: carrier_name
+        description: "Name of the carrier."
+      - name: carrier_on_time_to_pickup
+        description: "On-time performance for pickup."
+      - name: carrier_on_time_to_delivery
+        description: "On-time performance for delivery."
+      - name: carrier_on_time_overall
+        description: "Overall on-time performance of the carrier."
