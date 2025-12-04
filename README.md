@@ -1,475 +1,236 @@
-<div id="top">
+# 🌞 dbt-data_challenge_loadsmart
 
-<!-- HEADER STYLE: CLASSIC -->
-<div align="center">
-
-<img src="readmeai/assets/logos/purple.svg" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
-
-# DBT-DATA_CHALLENGE_LOADSMART
-
-<em></em>
-
-<!-- BADGES -->
-<img src="https://img.shields.io/github/license/leooliveira135/dbt-data_challenge_loadsmart?style=default&logo=opensourceinitiative&logoColor=white&color=0080ff" alt="license">
-<img src="https://img.shields.io/github/last-commit/leooliveira135/dbt-data_challenge_loadsmart?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-<img src="https://img.shields.io/github/languages/top/leooliveira135/dbt-data_challenge_loadsmart?style=default&color=0080ff" alt="repo-top-language">
-<img src="https://img.shields.io/github/languages/count/leooliveira135/dbt-data_challenge_loadsmart?style=default&color=0080ff" alt="repo-language-count">
-
-<!-- default option, no dependency badges. -->
-
-
-<!-- default option, no dependency badges. -->
-
-</div>
-<br>
+![generated](https://img.shields.io/badge/README-Generated-A931EC?style=flat-square)
+![infra](https://img.shields.io/badge/Infrastructure-Terraform-A931EC?style=flat-square)
+![aws](https://img.shields.io/badge/AWS-Athena%20%7C%20Glue-A931EC?style=flat-square)
+![dbt](https://img.shields.io/badge/dbt-Core%20%7C%20Athena-A931EC?style=flat-square)
+![python](https://img.shields.io/badge/Python-3.11-A931EC?style=flat-square)
 
 ---
 
-## Table of Contents
+## 🌞 Overview
 
-- [Table of Contents](#table-of-contents)
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-    - [Project Index](#project-index)
-- [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Testing](#testing)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+This repository contains an end-to-end data engineering pipeline using:
+
+- **Terraform** to provision AWS infrastructure  
+- **AWS Glue**, **Athena**, **S3**, and **IAM**  
+- **dbt Core** + **dbt-athena(-community)**  
+- A **Python loader** built with PySpark  
+- A complete **Bootstrap script (`setup.sh`)** for Fedora-based systems
+
+The README below reflects the exact logic of `setup.sh`, translated, cleaned up, and organized in a developer-friendly format.
 
 ---
 
-## Overview
+## 🌞 Table of Contents
 
-
-
----
-
-## Features
-
-<code>❯ REPLACE-ME</code>
-
----
-
-## Project Structure
-
-```sh
-└── dbt-data_challenge_loadsmart/
-    ├── LICENSE
-    ├── README.md
-    ├── analyses
-    │   └── .gitkeep
-    ├── dbt_project.yml
-    ├── macros
-    │   └── .gitkeep
-    ├── models
-    │   ├── sources
-    │   └── star_schema
-    ├── seeds
-    │   └── .gitkeep
-    ├── setup.sh
-    ├── snapshots
-    │   └── .gitkeep
-    ├── src
-    │   ├── __init__.py
-    │   ├── loader
-    │   ├── notebook
-    │   └── sftp_setup.sh
-    ├── terraform
-    │   ├── 2025_data_challenge_ae.csv
-    │   ├── main.tf
-    │   ├── output.tf
-    │   ├── terraform_admin_policy.txt
-    │   └── variables.tf
-    └── tests
-        └── .gitkeep
-```
-
-### Project Index
-
-<details open>
-	<summary><b><code>DBT-DATA_CHALLENGE_LOADSMART/</code></b></summary>
-	<!-- __root__ Submodule -->
-	<details>
-		<summary><b>__root__</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ __root__</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/setup.sh'>setup.sh</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/dbt_project.yml'>dbt_project.yml</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/LICENSE'>LICENSE</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-		</blockquote>
-	</details>
-	<!-- terraform Submodule -->
-	<details>
-		<summary><b>terraform</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ terraform</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/terraform/variables.tf'>variables.tf</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/terraform/terraform_admin_policy.txt'>terraform_admin_policy.txt</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/terraform/output.tf'>output.tf</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/terraform/main.tf'>main.tf</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-		</blockquote>
-	</details>
-	<!-- src Submodule -->
-	<details>
-		<summary><b>src</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ src</b></code>
-			<table style='width: 100%; border-collapse: collapse;'>
-			<thead>
-				<tr style='background-color: #f8f9fa;'>
-					<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-					<th style='text-align: left; padding: 8px;'>Summary</th>
-				</tr>
-			</thead>
-				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/sftp_setup.sh'>sftp_setup.sh</a></b></td>
-					<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-				</tr>
-			</table>
-			<!-- notebook Submodule -->
-			<details>
-				<summary><b>notebook</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ src.notebook</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/notebook/split_column.ipynb'>split_column.ipynb</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/notebook/send_file_via_sftp.ipynb'>send_file_via_sftp.ipynb</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/notebook/send_file_via_email.ipynb'>send_file_via_email.ipynb</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/notebook/requirements.txt'>requirements.txt</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/notebook/export_loadsmart_schema.ipynb'>export_loadsmart_schema.ipynb</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-				</blockquote>
-			</details>
-			<!-- loader Submodule -->
-			<details>
-				<summary><b>loader</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ src.loader</b></code>
-					<table style='width: 100%; border-collapse: collapse;'>
-					<thead>
-						<tr style='background-color: #f8f9fa;'>
-							<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-							<th style='text-align: left; padding: 8px;'>Summary</th>
-						</tr>
-					</thead>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/loader/vars.py'>vars.py</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/loader/requirements.txt'>requirements.txt</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-						<tr style='border-bottom: 1px solid #eee;'>
-							<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/src/loader/load_data_challenge.py'>load_data_challenge.py</a></b></td>
-							<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-						</tr>
-					</table>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-	<!-- models Submodule -->
-	<details>
-		<summary><b>models</b></summary>
-		<blockquote>
-			<div class='directory-path' style='padding: 8px 0; color: #666;'>
-				<code><b>⦿ models</b></code>
-			<!-- sources Submodule -->
-			<details>
-				<summary><b>sources</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ models.sources</b></code>
-					<!-- loadsmart Submodule -->
-					<details>
-						<summary><b>loadsmart</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ models.sources.loadsmart</b></code>
-							<table style='width: 100%; border-collapse: collapse;'>
-							<thead>
-								<tr style='background-color: #f8f9fa;'>
-									<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-									<th style='text-align: left; padding: 8px;'>Summary</th>
-								</tr>
-							</thead>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/sources/loadsmart/data_challenge.yaml'>data_challenge.yaml</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-							</table>
-						</blockquote>
-					</details>
-				</blockquote>
-			</details>
-			<!-- star_schema Submodule -->
-			<details>
-				<summary><b>star_schema</b></summary>
-				<blockquote>
-					<div class='directory-path' style='padding: 8px 0; color: #666;'>
-						<code><b>⦿ models.star_schema</b></code>
-					<!-- facts Submodule -->
-					<details>
-						<summary><b>facts</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ models.star_schema.facts</b></code>
-							<table style='width: 100%; border-collapse: collapse;'>
-							<thead>
-								<tr style='background-color: #f8f9fa;'>
-									<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-									<th style='text-align: left; padding: 8px;'>Summary</th>
-								</tr>
-							</thead>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/star_schema/facts/fact_loadsmart.sql'>fact_loadsmart.sql</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-							</table>
-						</blockquote>
-					</details>
-					<!-- dimensions Submodule -->
-					<details>
-						<summary><b>dimensions</b></summary>
-						<blockquote>
-							<div class='directory-path' style='padding: 8px 0; color: #666;'>
-								<code><b>⦿ models.star_schema.dimensions</b></code>
-							<table style='width: 100%; border-collapse: collapse;'>
-							<thead>
-								<tr style='background-color: #f8f9fa;'>
-									<th style='width: 30%; text-align: left; padding: 8px;'>File Name</th>
-									<th style='text-align: left; padding: 8px;'>Summary</th>
-								</tr>
-							</thead>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/star_schema/dimensions/dim_shippers.sql'>dim_shippers.sql</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/star_schema/dimensions/dim_pickup.sql'>dim_pickup.sql</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/star_schema/dimensions/dim_delivery.sql'>dim_delivery.sql</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/star_schema/dimensions/dim_carriers.sql'>dim_carriers.sql</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-								<tr style='border-bottom: 1px solid #eee;'>
-									<td style='padding: 8px;'><b><a href='https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/master/models/star_schema/dimensions/dim_book.sql'>dim_book.sql</a></b></td>
-									<td style='padding: 8px;'>Code>❯ REPLACE-ME</code></td>
-								</tr>
-							</table>
-						</blockquote>
-					</details>
-				</blockquote>
-			</details>
-		</blockquote>
-	</details>
-</details>
+- [Overview](#-overview)  
+- [Prerequisites](#-prerequisites)  
+- [Quick Setup (Automated Script)](#-quick-setup-automated-script)  
+- [Detailed Step-by-Step Guide](#-detailed-step-by-step-guide)  
+- [dbt Project Setup](#-dbt-project-setup)  
+- [Useful Commands](#-useful-commands)  
+- [Notes & Important Considerations](#-notes--important-considerations)  
+- [Troubleshooting](#-troubleshooting)  
+- [Contributing](#-contributing)  
+- [License](#-license)
 
 ---
 
-## Getting Started
+## 🌞 Prerequisites
 
-### Prerequisites
+- Fedora-based Linux distribution  
+- Admin/sudo privileges  
+- AWS account with permission to create infrastructure  
+- Terraform installed (or allow script to install it)  
+- Python 3.11 environment (script sets up via pyenv)
 
-This project requires the following dependencies:
+---
 
-- **Programming Language:** SQL
-- **Package Manager:** Pip
+## 🌞 Quick Setup (Automated Script)
 
-### Installation
+This is the **exact shell script logic**, translated from your `setup.sh`.  
+Just update `project_path` and run:
 
-Build dbt-data_challenge_loadsmart from the source and intsall dependencies:
+```bash
+project_path='/path/to/dbt-data_challenge_loadsmart'
 
-1. **Clone the repository:**
+chmod 744 *.sh
 
-    ```sh
-    ❯ git clone https://github.com/leooliveira135/dbt-data_challenge_loadsmart
-    ```
+# --- Java (Fedora) ---
+sudo dnf install -y java-21-openjdk java-21-openjdk-devel
+sudo alternatives --config java
+export JAVA_BIN=$(readlink -f $(which java))
+export JAVA_HOME="$(dirname "$(dirname "$JAVA_BIN")")"
+export PATH="$JAVA_HOME/bin:$PATH"
+java --version
 
-2. **Navigate to the project directory:**
+if type -p java; then echo "Java found"; else echo "Java missing"; exit 1; fi
 
-    ```sh
-    ❯ cd dbt-data_challenge_loadsmart
-    ```
+# --- Terraform ---
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+sudo dnf -y install terraform
+terraform --help
 
-3. **Install the dependencies:**
+# --- Infrastructure ---
+cd $project_path/terraform
+terraform init
+terraform plan
+terraform apply
 
-<!-- SHIELDS BADGE CURRENTLY DISABLED -->
-	<!-- [![pip][pip-shield]][pip-link] -->
-	<!-- REFERENCE LINKS -->
-	<!-- [pip-shield]: None -->
-	<!-- [pip-link]: None -->
+# --- AWS CLI ---
+cd /tmp
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
 
-	**Using [pip](None):**
+# --- Configure AWS CLI from Terraform outputs ---
+cd $project_path/terraform
+AWS_KEY=$(terraform output -json credentials | jq -r '.["terraform-aws"].key')
+AWS_SECRET=$(terraform output -json credentials | jq -r '.["terraform-aws"].secret')
 
-	```sh
-	❯ echo 'INSERT-INSTALL-COMMAND-HERE'
-	```
+aws configure set aws_access_key_id $AWS_KEY
+aws configure set aws_secret_access_key $AWS_SECRET
+aws configure set default.region us-east-1
+aws configure set default.output json
 
-### Usage
+aws sts get-caller-identity
 
-Run the project with:
+# --- pyenv / Python 3.11 ---
+curl https://pyenv.run | bash
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv.init -)"
+eval "$(pyenv virtualenv-init -)"
 
-**Using [pip](None):**
-```sh
-echo 'INSERT-RUN-COMMAND-HERE'
-```
+pyenv install 3.11.6
+pyenv virtualenv 3.11.6 dbt_env
+pyenv activate dbt_env
 
-### Testing
+sudo dnf install -y bzip2-devel sqlite-devel readline-devel gdbm-devel libdb-devel libuuid-devel tk-devel
 
-Dbt-data_challenge_loadsmart uses the {__test_framework__} test framework. Run the test suite with:
+# --- Install dbt ---
+sudo dnf install -y python3 python3-pip
+pip3 install dbt-core dbt-athena dbt-athena-community
+dbt --version
 
-**Using [pip](None):**
-```sh
-echo 'INSERT-TEST-COMMAND-HERE'
+cd $project_path
+
+# --- Init dbt project ---
+dbt init
+
+# --- Validate / Build / Test ---
+dbt debug --profiles-dir .
+dbt run --profiles-dir .
+dbt test --profiles-dir .
+
+# --- Loader ---
+pip3 install -r $project_path/src/loader/requirements.txt
+python -m src.loader.load_data_challenge
+
+echo "Setup completed successfully."
 ```
 
 ---
 
-## Roadmap
+## 🌞 Detailed Step-by-Step Guide
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
+### 1. Set the project path  
+
+```bash
+project_path='/your/local/path'
+```
+
+### 2. Make all `.sh` files executable
+
+```bash
+chmod 744 *.sh
+```
+
+### 3. Install Java 21
+
+(Comments mention Java 11, but script installs Java 21)
+
+```bash
+sudo dnf install -y java-21-openjdk java-21-openjdk-devel
+sudo alternatives --config java
+```
+
+### 4. Install Terraform  
+Follow the HashiCorp repo instructions.
+
+### 5. Build AWS Infrastructure  
+
+```bash
+terraform init
+terraform apply
+```
+
+### 6. Install AWS CLI v2  
+
+### 7. Configure AWS CLI using Terraform outputs  
+
+Uses `jq` to parse JSON into AWS credentials.
+
+### 8. Install & Configure pyenv + Python 3.11  
+
+### 9. Install dbt Core + Athena adapter  
+
+### 10. Initialize dbt Project  
+
+During `dbt init`, choose Athena and enter:  
+- STG bucket → `s3://data-challenge-loadsmart-stg/athena/`  
+- PROD bucket → `s3://data-challenge-loadsmart/athena/`  
+- Region → `us-east-1`  
+- Schema → `loadsmart`  
+- Database → `aws_star_schema`  
+
+### 11. Run loader  
+
+```bash
+python -m src.loader.load_data_challenge
+```
+
+---
+
+## 🌞 Useful Commands
+
+| Action | Command |
+|--------|---------|
+| Destroy infra | `terraform destroy` |
+| Show Terraform JSON | `terraform output -json | jq .` |
+| Activate pyenv | `pyenv activate dbt_env` |
+| Test dbt connection | `dbt debug --profiles-dir .` |
 
 ---
 
-## Contributing
+## 🌞 Notes & Important Considerations
 
-- **💬 [Join the Discussions](https://github.com/leooliveira135/dbt-data_challenge_loadsmart/discussions)**: Share your insights, provide feedback, or ask questions.
-- **🐛 [Report Issues](https://github.com/leooliveira135/dbt-data_challenge_loadsmart/issues)**: Submit bugs found or log feature requests for the `dbt-data_challenge_loadsmart` project.
-- **💡 [Submit Pull Requests](https://github.com/leooliveira135/dbt-data_challenge_loadsmart/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-
-<details closed>
-<summary>Contributing Guidelines</summary>
-
-1. **Fork the Repository**: Start by forking the project repository to your github account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
-   ```sh
-   git clone https://github.com/leooliveira135/dbt-data_challenge_loadsmart
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to github**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
-</details>
-
-<details closed>
-<summary>Contributor Graph</summary>
-<br>
-<p align="left">
-   <a href="https://github.com{/leooliveira135/dbt-data_challenge_loadsmart/}graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=leooliveira135/dbt-data_challenge_loadsmart">
-   </a>
-</p>
-</details>
+- Script assumes **Fedora**. For Ubuntu/Debian change package manager.  
+- Java version mismatch in comments.  
+- Terraform outputs include IAM credentials — handle safely.  
+- Ensure `jq` is installed.  
+- Fix typo: script uses `dnf5`; correct command is `dnf`.
 
 ---
 
-## License
+## 🌞 Troubleshooting
 
-Dbt-data_challenge_loadsmart is protected under the [LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+- **Athena not listed in dbt** → reinstall `dbt-athena-community`  
+- **Glue access denied** → IAM or region mismatch  
+- **readmeai segmentation fault** → avoid problematic flags; this README is pre-generated  
+
+---
+
+## 🌞 Contributing
+
+1. Fork  
+2. Create feature branch  
+3. Submit PR  
 
 ---
 
-## Acknowledgments
+## 🌞 License
 
-- Credit `contributors`, `inspiration`, `references`, etc.
-
-<div align="right">
-
-[![][back-to-top]](#top)
-
-</div>
-
-
-[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-151515?style=flat-square
-
-
----
+No license included yet.
