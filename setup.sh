@@ -1,4 +1,4 @@
-project_path='/home/leonardooliveira/Documentos/github/dbt-data_challenge_loadsmart'
+project_path='/home/leonardooliveira/Documentos/github/dbt-data_challenge_loadsmart' #change it to your machine path
 
 # enable the sh files to be run
 chmod 744 *.sh
@@ -60,23 +60,32 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 pyenv install 3.11.6
-pyenv virtualenv 3.11.6 dbt-3.11
-pyenv activate dbt-3.11
+pyenv virtualenv 3.11.6 dbt_env
+pyenv activate dbt_env
 
-sudo dnf5 install -y bzip2-devel sqlite-devel readline-devel gdbm-devel libdb-devel libuuid-devel tk-devel && rm -rf ~/.pyenv/versions/3.11.6 ~/.pyenv/versions/dbt-3.11
-
-source /home/leonardooliveira/dbt-env/bin/activate
+sudo dnf5 install -y bzip2-devel sqlite-devel readline-devel gdbm-devel libdb-devel libuuid-devel tk-devel
 
 # install dbt into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.getdbt.com/docs/core/pip-install
 sudo dnf install -y python3 python3-pip
-pip3 install dbt-core dbt-athena
+pip3 install dbt-core dbt-athena dbt-athena-community
 
 # verify dbt installation
 dbt --version
 
 # navigate to the project folder
 cd $project_path
+
+# initiate the dbt project
+dbt init
+#follow the below parameters to create a dbt athena project
+# after run dbt init, insert the number corresponding to athena connector
+# then insert the s3 stg bucket, s3://data-challenge-loadsmart-stg/athena/
+# now insert the s3 prod bucket, s3://data-challenge-loadsmart/athena/
+# after that insert the region name, us-east-1
+# the schema name, insert loadsmart as schema name
+# the database name, insert the glue catalog created called aws_star_schema as database
+# if you want more than 1 thread running into your profile, put the desired number, if not just press enter
 
 # run dbt to test the connection
 dbt debug --profiles-dir .
@@ -88,8 +97,7 @@ dbt run --profiles-dir .
 dbt test --profiles-dir .
 
 # run requirements.txt to install pyspark
-cd $project_path/src/loader
-pip3 install -r requirements.txt
+pip3 install -r $project_path/src/loader/requirements.txt
 python -m src.loader.load_data_challenge
 
 echo "Setup completed successfully."
